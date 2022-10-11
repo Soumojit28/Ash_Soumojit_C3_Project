@@ -70,12 +70,23 @@ class RestaurantTest {
 
     @Test
     public void get_price_of_a_single_item_which_is_not_present_should_return_zero(){
-
+        restaurant = new_restaurant();
+        assertEquals(0,restaurant.getItemPrice("Ice cream"));
     }
 
     @Test
     public void get_price_of_a_single_item_should_return_current_price(){
+        restaurant = new_restaurant();
+        assertEquals(119,restaurant.getItemPrice("Sweet corn soup"));
+    }
 
+    @Test
+    public void calculate_total_price_of_a_multiple_items_should_return_correct_price(){
+        restaurant = new_restaurant();
+        ArrayList<String> itemList= new ArrayList<>();
+        itemList.add("Sweet corn soup");
+        itemList.add("Vegetable lasagne");
+        assertEquals(119+269,restaurant.calculateTotalPrice(itemList));
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
